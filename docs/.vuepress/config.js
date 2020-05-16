@@ -1,7 +1,7 @@
 module.exports = {
     title: 'Javascript Study Notes',
     description: '学习笔记',
-    base: '/docs/JavaScript/',
+    base: '/docs/Study-Notes/',
     themeConfig: {
         nav: [
             { text: '笔记配置', link: '/' },
