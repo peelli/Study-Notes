@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>js执行三部曲 | Javascript Study Notes</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="学习笔记">
+    <link rel="preload" href="/docs/JavaScript/assets/css/0.styles.d02115bd.css" as="style"><link rel="preload" href="/docs/JavaScript/assets/js/app.513cfbd9.js" as="script"><link rel="preload" href="/docs/JavaScript/assets/js/2.6350e61a.js" as="script"><link rel="preload" href="/docs/JavaScript/assets/js/7.50d944ee.js" as="script"><link rel="prefetch" href="/docs/JavaScript/assets/js/3.b047a52a.js"><link rel="prefetch" href="/docs/JavaScript/assets/js/4.a4923748.js"><link rel="prefetch" href="/docs/JavaScript/assets/js/5.dabdea9f.js"><link rel="prefetch" href="/docs/JavaScript/assets/js/6.7fd4d46b.js"><link rel="prefetch" href="/docs/JavaScript/assets/js/8.f5ce24b4.js"><link rel="prefetch" href="/docs/JavaScript/assets/js/9.cc86c707.js">
+    <link rel="stylesheet" href="/docs/JavaScript/assets/css/0.styles.d02115bd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/JavaScript/" class="home-link router-link-active"><!----> <span class="site-name">Javascript Study Notes</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/JavaScript/" class="nav-link">
+  笔记配置
+</a></div><div class="nav-item"><a href="/docs/JavaScript/notes-javascript/" class="nav-link router-link-active">
+  Javascript
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/JavaScript/" class="nav-link">
+  笔记配置
+</a></div><div class="nav-item"><a href="/docs/JavaScript/notes-javascript/" class="nav-link router-link-active">
+  Javascript
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/docs/JavaScript/notes-javascript/" class="sidebar-link">javascript 学习笔记</a></li><li><a href="/docs/JavaScript/notes-javascript/函数初始作用域.html" class="sidebar-link">arguments</a></li><li><a href="/docs/JavaScript/notes-javascript/立即执行函数.html" class="sidebar-link">JavaScript-你不知道的立即执行函数</a></li><li><a href="/docs/JavaScript/notes-javascript/js编译.html" class="active sidebar-link">js执行三部曲</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/JavaScript/notes-javascript/js编译.html#一-语法分析" class="sidebar-link">一.语法分析</a></li><li class="sidebar-sub-header"><a href="/docs/JavaScript/notes-javascript/js编译.html#二-预编译" class="sidebar-link">二.预编译</a></li><li class="sidebar-sub-header"><a href="/docs/JavaScript/notes-javascript/js编译.html#三-解释执行" class="sidebar-link">三.解释执行</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="js执行三部曲"><a href="#js执行三部曲" class="header-anchor">#</a> js执行三部曲</h1> <h2 id="一-语法分析"><a href="#一-语法分析" class="header-anchor">#</a> 一.语法分析</h2> <p>JavaScript引擎先通篇扫描一遍js代码，看看是否有语法错误</p> <h2 id="二-预编译"><a href="#二-预编译" class="header-anchor">#</a> 二.预编译</h2> <p>预编译有两个比较重要的特性：</p> <ol><li>函数声明整体提升</li></ol> <div class="language- extra-class"><pre class="language-text"><code>test() // 12
+function test(){
+    console.log(12)
+}
+</code></pre></div><ol start="2"><li><p>变量提升（仅提升声明，不提升赋值）</p> <p>变量提升也是var的特性之一，let声明的变量就不存在变量提升效果。</p></li></ol> <div class="language- extra-class"><pre class="language-text"><code>console.log(a) // undefined
+console.log(b) // Error
+var a = 123
+let b = 'lalala'
+</code></pre></div><p><strong>函数预编译</strong>：函数预编译一共会经历四个步骤：
+考虑如下示例：</p> <div class="language- extra-class"><pre class="language-text"><code>function fn(a){
+    console.log(a);         // 1
+    var a = 123 ;           // 2
+    console.log(a) ;        // 3
+    function a(){} ;        // 4
+    console.log(a) ;        // 5
+    var b = function(){} ;  // 6
+    console.log(b) ;        // 7
+    function d(){} ;        // 8
+}
+fn(1) ;
+</code></pre></div><ol><li>创建AO对象(执行上下文)</li></ol> <div class="language- extra-class"><pre class="language-text"><code>   &lt;!--相当于执行如下语句--&gt;
+   var AO = {}
+</code></pre></div><ol start="2"><li>找形参和变量声明，将变量和形参名作为AO对象的属性名，并设置值为undefined（变量提升）</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&lt;!--经历此步后--&gt;
+上述形参a：OA.a = undefined
+上述第2行：OA.a = undefined
+上述第6行：OA.b = undefined
+之后：
+OA = {
+    a : undefined,
+    b : undefined
+}
+</code></pre></div><ol start="3"><li>将实参值和形参统一：</li></ol> <div class="language- extra-class"><pre class="language-text"><code>实参a=1：OA.a = 1
+之后：
+OA = {
+    a:1,
+    b:undefined
+}
+</code></pre></div><ol start="4"><li>在函数体里找函数声明，值赋予函数体（此操作在函数执行时不再重复进行）</li></ol> <div class="language- extra-class"><pre class="language-text"><code>上述第4步：OA.a = function (){}
+上述第8步：OA.d = function (){}
+//注意上述第6步是函数表达式，不是函数声明
+之后：
+OA = {
+    a : function(){},
+    b : undefined,
+    d : function(){}
+}
+</code></pre></div><p>预编译在函数执行前一刻完成。
+最终输出结果如下：</p> <div class="language- extra-class"><pre class="language-text"><code>function fn(a){
+    console.log(a);         // function (){}
+    var a = 123 ;           
+    console.log(a) ;        // 123
+    function a(){} ;        // 此步骤在预编译的时候进行过了，不再重复进行
+    console.log(a) ;        // 123
+    var b = function(){} ;   
+    console.log(b) ;        // function (){}
+    function d(){} ;        
+}
+fn(1) ;
+</code></pre></div><h2 id="三-解释执行"><a href="#三-解释执行" class="header-anchor">#</a> 三.解释执行</h2> <p>JavaScript是一门解释性语言，在执行的时候是从上到下解释一行执行一行的过程。其他的编译性语言如java会通篇编译一遍，生成可执行文件再执行此文件。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/docs/JavaScript/notes-javascript/立即执行函数.html" class="prev">
+        JavaScript-你不知道的立即执行函数
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/docs/JavaScript/assets/js/app.513cfbd9.js" defer></script><script src="/docs/JavaScript/assets/js/2.6350e61a.js" defer></script><script src="/docs/JavaScript/assets/js/7.50d944ee.js" defer></script>
+  </body>
+</html>
