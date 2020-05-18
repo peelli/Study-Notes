@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>问题一： | Javascript Study Notes</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="学习笔记">
+    <link rel="preload" href="/blog/assets/css/0.styles.dab7da93.css" as="style"><link rel="preload" href="/blog/assets/js/app.3e1d1e84.js" as="script"><link rel="preload" href="/blog/assets/js/2.b7b72297.js" as="script"><link rel="preload" href="/blog/assets/js/9.c9aa53c3.js" as="script"><link rel="prefetch" href="/blog/assets/js/10.afe0a0f4.js"><link rel="prefetch" href="/blog/assets/js/11.713bd3ea.js"><link rel="prefetch" href="/blog/assets/js/3.9e8deeef.js"><link rel="prefetch" href="/blog/assets/js/4.a4923748.js"><link rel="prefetch" href="/blog/assets/js/5.f09542a4.js"><link rel="prefetch" href="/blog/assets/js/6.da2c79c5.js"><link rel="prefetch" href="/blog/assets/js/7.a0cba1cd.js"><link rel="prefetch" href="/blog/assets/js/8.f5ce24b4.js">
+    <link rel="stylesheet" href="/blog/assets/css/0.styles.dab7da93.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/blog/" class="home-link router-link-active"><!----> <span class="site-name">Javascript Study Notes</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/blog/" class="nav-link">
+  笔记配置
+</a></div><div class="nav-item"><a href="/blog/notes-javascript/" class="nav-link router-link-active">
+  Javascript
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/blog/" class="nav-link">
+  笔记配置
+</a></div><div class="nav-item"><a href="/blog/notes-javascript/" class="nav-link router-link-active">
+  Javascript
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/blog/notes-javascript/" class="sidebar-link">javascript 学习笔记</a></li><li><a href="/blog/notes-javascript/函数初始作用域.html" class="sidebar-link">arguments</a></li><li><a href="/blog/notes-javascript/立即执行函数.html" class="sidebar-link">JavaScript-你不知道的立即执行函数</a></li><li><a href="/blog/notes-javascript/js编译.html" class="sidebar-link">js执行三部曲</a></li><li><a href="/blog/notes-javascript/奇怪的题目.html" class="active sidebar-link">问题一：</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/blog/notes-javascript/奇怪的题目.html#问题一：" class="sidebar-link">问题一：</a></li><li class="sidebar-sub-header"><a href="/blog/notes-javascript/奇怪的题目.html#问题二" class="sidebar-link">问题二</a></li></ul></li><li><a href="/blog/notes-javascript/闭包.html" class="sidebar-link">闭包</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h2 id="问题一："><a href="#问题一：" class="header-anchor">#</a> 问题一：</h2> <p>请问以下代码输出什么？</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">var</span> f <span class="token operator">=</span> <span class="token punctuation">(</span>
+    <span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">function</span> <span class="token function">p</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">'2'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> f<span class="token punctuation">)</span>
+</code></pre></div><p>答案是：string</p> <p><strong>知识点</strong>：逗号在JavaScript中其实是个运算符，会将逗号前边和后边的表达式进行计算，再返回后边的表达式。如下：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">//一定要加括号，否则会报语法错误</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token comment">// 2</span>
+</code></pre></div><h2 id="问题二"><a href="#问题二" class="header-anchor">#</a> 问题二</h2> <p>请问一下代码输出什么？</p> <div class="language- extra-class"><pre class="language-text"><code>var x = 1 ; 
+if(function f(){ } ) {
+	x += typeof f
+}
+console.log(x) 
+</code></pre></div><p>答案是：1undefined</p> <p><strong>知识点</strong>：括号()会把里面的东西变成表达式，也就是function f(){}放在括号里面就不是函数声明了，f自然也就不是函数了，并且f啥都不是，是一个未定义的东西。而使用typeof对一个未定义的东西求类型并不会报错，而是会返回字符串&quot;undefined&quot;，因此结果是1undefined 。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/blog/notes-javascript/js编译.html" class="prev">
+        js执行三部曲
+      </a></span> <span class="next"><a href="/blog/notes-javascript/闭包.html">
+        闭包
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/blog/assets/js/app.3e1d1e84.js" defer></script><script src="/blog/assets/js/2.b7b72297.js" defer></script><script src="/blog/assets/js/9.c9aa53c3.js" defer></script>
+  </body>
+</html>
