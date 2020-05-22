@@ -1,56 +1,69 @@
-// //闭包实现累加器
-// function add() {
+function deepClone(origin) {
+    var type = typeof origin, target
+    if (type == 'object') {
+        if (Object.prototype.toString.call(origin) == '[object Array]') {
+            target = []
+        } else {
+            target = {}
+        }
+        for (var attr in origin) {
+            if (typeof origin[attr] == 'object' && origin[attr] !== null) {
+                target[attr] = deepClone(origin[attr])
+            } else {
+                target[attr] = origin[attr]
+            }
+        }
+    } else {
+        target = origin
+    }
+    return target
 
-//     var num = 0
-//     return function a() {
-//         var div = document.getElementById('count')
-//         div.innerHTML = num++
-//         if (num == 60) num = 0
-//     }
-// }
-// // 经典闭包 要求输出0-9
-// function log() {
-//     var arr = []
-//     for (var i = 0; i < 10; i++) {
-//         arr[i] = (function (i) {
-//             return function result() {
-//                 console.log(i)
+}
+
+var b = [1, 2, 3, { key: 'dede', c: { name: 'ccc', age: 123 } }]
+b = {
+    name: 'bbb',
+    sex: 'male',
+    age: null,
+    wife: {
+        one: 'xiaoliu',
+        two: 'xiaohua',
+        three: null
+    }
+}
+var a = deepClone(b)
+// function getDom(str) {
+//     var isId = /#/.test(str)
+//     var isClass = /\./.test(str)
+//     return isId ? document.getElementById(str.split('#')[1]) : isClass ? getElByClassName(str) : document.getElementsByTagName(str)
+//     function getElByClassName(str) {
+//         var tags = document.getElementsByTagName('*'), array = [], str = str.split('.')[1]
+//         for (var i = 0, len = tags.length; i < len; i++) {
+//             if (tags[i].className) {
+//                 var className = tags[i].className.replace(/\s+/g, ' ')
+//                 var arr = className.split(' ')
+//                 if (arr.indexOf(str) !== -1) {
+//                     array.push(tags[i])
+//                 }
+//             } else {
+//                 continue
 //             }
-//         }(i))
-//     }
-//     return arr
-// }
-// var arr = log()
-// for (var i = 0; i < 10; i++) {
-//     arr[i]()
-// }
-// // 经典闭包升华版 页面上有多个li标签，要求为每个li标签添加点击事件，输出它们的索引
-// var lis = document.getElementsByTagName('li')
-// for (var i = 0; i < lis.length; i++) {
-//     (function (i) {
-//         lis[i].addEventListener('click', function () {
-//             console.log(i)
-//         })
-//     }(i))
-// }
 
-// // 写一个方法，返回一个字符串的字节数，中文占俩字节，英文占一个字节。提示：charCodeAt(i)函数可获得字符串第i个字符的unicode码，大于255是中文，小于等于255是英文
-// function getCharLength(str) {
-//     var length = str.length
-//     for (var i in str) {
-//         if (str.charCodeAt(i) > 255) length++
+//         }
+//         return array.length ? array : null
 //     }
-//     return length
 // }
-
-// 
-var x = 1, y = z = 2
-function add(n) {
-    return n = n + 1
-}
-y = add(x)
-function add(n) {
-    return n = n + 3
-}
-z = add(x)
-console.log(x, y, z)
+// console.log(getDom('div'))
+// function getStyle(dom, attr) {
+//     if (window.getComputedStyle) {
+//         return window.getComputedStyle(dom, null)[attr]
+//     } else {
+//         return currentStyle
+//     }
+// }
+// function startMove(dom, target) {
+//     clearInterval(dom.timer)
+//     dom.timer = setInterval(() => {
+//         var speed = target - dom
+//     }, 30);
+// }
