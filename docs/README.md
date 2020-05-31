@@ -64,7 +64,11 @@ cnpm install vuepress -D
 module.exports = {
     title: 'Javascript Study Notes',
     description: 'JavaScript学习笔记',
-    base: '/docs/JavaScript/',
+    //记住这里的base配置很重要，涉及到部署时能否正常显示文档内容，根据你的项目路径来配置
+    //当vuepress构建之后会生成dist文件夹，里面的html引用css路径就加入下面这一段
+    //不理解没关系，如果不用部署的话就可以先不管这个
+    //举个例子：我是部署到github上去的，我github上的项目名叫blog，因此我的github部署地址为https://lp1290271715.github.io/blog/，那我下面这个base就需要配置成/blog/，否则构建出来的页面样式会错乱
+    base: '/blog/',
     themeConfig: {
         nav: [
             { text: '笔记配置', link: '/' },

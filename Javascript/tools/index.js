@@ -17,7 +17,7 @@ function type(target) {
 }
 
 //数组去重
-Array.prototype.unique = function() {
+Array.prototype.unique = function () {
     var obj = {},
         arr = this,
         result = [];
@@ -128,9 +128,9 @@ function findFirstStr(str, ch) {
 }
 // 5. 计算数组中，最大连续增长子序列的长度，如：[1,2,3,4,1,2,3,4,5,1,2,3] 结果为5
 function getMaxLenth(arr) {
-    var temp = 1,
+    var temp = 0,
         result = 0;
-    for (var i = 1, len = arr.length; i < len; i++) {
+    for (var i = 0, len = arr.length; i < len; i++) {
         if (arr[i] > arr[i - 1]) {
             temp++;
         } else {
@@ -140,7 +140,4 @@ function getMaxLenth(arr) {
     }
     return Math.max(temp, result);
 }
-
-console.log(
-    getMaxLenth([1, 2, 3, 4, 1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6, 7, 8])
-);
+console.log(getMaxLenth([1, 2, 3, 4, 5, 1, 2, 3, 4, 1, 2, 3, 4,]))

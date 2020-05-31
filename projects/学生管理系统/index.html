@@ -26,12 +26,12 @@
             <dt>
                 学生管理
             </dt>
-            <dd class="active">学生列表</dd>
-            <dd>新增学生</dd>
+            <dd class="active" data-id="student-list">学生列表</dd>
+            <dd data-id="add-student">新增学生</dd>
         </dl>
     </div>
     <div class="content">
-        <div class="student-list">
+        <div id="student-list" class="student-list">
             <table>
                 <thead>
                     <tr>
@@ -504,7 +504,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="add-student">
+        <div id="add-student" class="add-student">
             <form action="">
                 <div class="form-item">
                     <label for="username">姓名</label>
@@ -542,6 +542,9 @@
             </form>
         </div>
     </div>
+    <script src="./cookie.js"></script>
+    <script src="./ajax.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

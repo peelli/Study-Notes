@@ -1,210 +1,210 @@
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 .body {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 * {
-    margin: 0;
+  margin: 0;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 70px;
-    line-height: 70px;
-    color: #b3bcc5;
-    background-color: #354457;
-    z-index: 1;
-
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  color: #b3bcc5;
+  background-color: #354457;
+  z-index: 1;
 }
 
 .header .logo img {
-    width: 30px;
-    height: 30px;
-    vertical-align: middle;
-    margin-right: 10px;
-    margin-left: 30px;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-left: 30px;
 }
 
 .header .user ul {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
 }
 
 .header .user ul li {
-    height: 100%;
-    padding: 0 20px;
+  height: 100%;
+  padding: 0 20px;
+  background-color: #354457;
 }
 
 .header .user ul li a {
-    color: inherit;
+  color: inherit;
 }
 
 .header .user ul li:hover {
-    background-color: #fff;
-    color: #354457;
+  background-color: #fff;
+  color: #354457;
 }
 
 .header .user ul .login-out {
-    display: none;
+  cursor: pointer;
+  display: none;
+}
+.header .user ul:hover .login-out {
+  display: block;
 }
 
 /* -----------------------------nav--------------------------------- */
 .menu {
-    position: fixed;
-    left: 0;
-    top: 70px;
-    width: 200px;
-    height: calc(100% - 70px);
-    background-color: #4d5e70;
-    color: #b3bcc5;
+  position: fixed;
+  left: 0;
+  top: 70px;
+  width: 200px;
+  height: calc(100% - 70px);
+  background-color: #4d5e70;
+  color: #b3bcc5;
 }
 
 .menu dl dt,
 dd {
-    font-size: 14px;
-    cursor: pointer;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .menu dl dt {
-    height: 40px;
-    line-height: 40px;
-    text-indent: 5px;
-    font-weight: 700;
+  height: 40px;
+  line-height: 40px;
+  text-indent: 5px;
+  font-weight: 700;
 }
 
 .menu dl dd {
-    height: 40px;
-    line-height: 40px;
-    text-indent: 30px;
+  height: 40px;
+  line-height: 40px;
+  text-indent: 30px;
 }
 
 .menu dl dd:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    color: #354457;
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #354457;
 }
 
 .menu dl dd.active {
-    background-color: #ddd;
-    color: #354457;
+  background-color: #ddd;
+  color: #354457;
 }
-
-
-
-
 
 /* -----------------------------content--------------------------------- */
 .content {
-    position: absolute;
-    width: calc(100% - 200px);
-    top: 70px;
-    left: 200px;
-    min-height: calc(100% - 70px);
-    background: #eeeeee;
+  position: absolute;
+  width: calc(100% - 200px);
+  top: 70px;
+  left: 200px;
+  min-height: calc(100% - 70px);
+  background: #eeeeee;
 }
 
 .content .student-list table {
-    width: 100%;
-    line-height: 30px;
-    /* display: none; */
+  width: 100%;
+  line-height: 30px;
+  /* display: none; */
 }
 
 .content .student-list table thead {
-    color: #646987;
-    font-size: 14px;
-    background-color: #e3e8ee;
+  color: #646987;
+  font-size: 14px;
+  background-color: #e3e8ee;
 }
 
-
 .content .student-list table tbody tr {
-    text-align: center;
-    font-size: 14px;
-    color: #000000;
+  text-align: center;
+  font-size: 14px;
+  color: #000000;
 }
 
 .content .student-list table tbody {
-    background-color: #fff;
+  background-color: #fff;
 }
 
 .content .student-list table tbody .edit,
 .delete {
-    border: none;
-    color: #fff;
-    padding: 3px 10px;
-    font-size: 14px;
-    cursor: pointer;
+  border: none;
+  color: #fff;
+  padding: 3px 10px;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .content .student-list table tbody .edit {
-    background-color: #5cb85c;
+  background-color: #5cb85c;
 }
 
 .content .student-list table tbody .delete {
-    background-color: #d9534f;
+  background-color: #d9534f;
 }
 
 /* .add-student */
 .content .add-student {
-    position: absolute;
-    width: 100%;
-    min-height: 100%;
-    left: 0;
-    top: 0;
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  left: 0;
+  top: 0;
+  display: none;
 }
 
 .content .add-student form {
-    width: 400px;
-    margin: 50px auto;
+  width: 400px;
+  margin: 50px auto;
 }
 
 .content .add-student form .form-item {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .content .add-student form .form-item label {
-    min-width: 100px;
-    display: inline-block;
-    text-align: right;
-    margin-right: 10px;
+  min-width: 100px;
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
 }
 
 .content .add-student form .footer {
-    text-align: center;
+  text-align: center;
 }
 
 .content .add-student form .footer button {
-    background-color: transparent;
-    padding: 5px 25px;
-    border: 1px solid #000000;
-    border-radius: 2px;
+  background-color: transparent;
+  padding: 5px 25px;
+  border: 1px solid #000000;
+  border-radius: 2px;
 }

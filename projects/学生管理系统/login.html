@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            margin: 100px auto;
+            border: 1px solid #000000;
+            text-align: center;
+        }
+
+        .container h2 {
+            margin-top: 10px;
+        }
+
+        .container h2 a {
+            font-size: 14px;
+        }
+
+        .container form p {
+            margin: 15px auto;
+        }
+
+        .container form label {
+            width: 100px;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: right;
+        }
+
+        .container form .footer button {
+            width: 80px;
+            line-height: 30px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>登录<a href="./rigister.html">注册</a></h2>
+        <form action="">
+            <p>
+                <label for="account">账号</label>
+                <input type="text" id="account">
+            </p>
+            <p>
+                <label for="password">密码</label>
+                <input type="password" id="password">
+            </p>
+            <p class="footer">
+                <label for=""></label>
+                <button id="submit" type="button">提交</button>
+                <button type="reset">重置</button>
+            </p>
+        </form>
+    </div>
+    <script src="./cookie.js"></script>
+    <script src="./ajax.js"></script>
+    <script>
+        var btn = document.getElementById('submit')
+        btn.onclick = function () {
+            var form = document.getElementsByTagName('form')[0]
+            var account = form.account.value
+            var password = form.password.value
+            _ajax.post('http://open.duyiedu.com/api/student/stuLogin', {
+                appkey: 'peelli_1590497233904',
+                account: account,
+                password: password
+            }, function (res) {
+                if (res.status == 'success') {
+                    setCookie('account', account, 3600 * 1000)
+                    location.href = './index.html'
+                }
+            })
+            // ajax('post', 'http://open.duyiedu.com/api/student/stuLogin', {
+            //     appkey: 'peelli_1590497233904',
+            //     account: account,
+            //     password: password
+            // }, function (res) {
+            //     if (res.status == 'success') {
+            //         setCookie('account', account, 3600 * 1000)
+            //         location.href = './index.html'
+            //     }
+            // }, true)
+        }
+    </script>
+</body>
+
+</html>
