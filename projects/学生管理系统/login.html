@@ -74,13 +74,14 @@
             var account = form.account.value
             var password = form.password.value
             _ajax.post('http://open.duyiedu.com/api/student/stuLogin', {
-                appkey: 'peelli_1590497233904',
                 account: account,
                 password: password
             }, function (res) {
                 if (res.status == 'success') {
                     setCookie('account', account, 3600 * 1000)
                     location.href = './index.html'
+                } else {
+                    alert(res.msg)
                 }
             })
             // ajax('post', 'http://open.duyiedu.com/api/student/stuLogin', {
