@@ -140,4 +140,92 @@ function getMaxLenth(arr) {
     }
     return Math.max(temp, result);
 }
-console.log(getMaxLenth([1, 2, 3, 4, 5, 1, 2, 3, 4, 1, 2, 3, 4,]))
+// 6.遍历元素节点树，在原型链上编程
+Element.prototype.enumElem = function (onlyElem = true) {
+    var children = onlyElem ? this.children : this.childNodes
+    for (var i = 0, len = children.length; i < len; i++) {
+        console.log(children[i])
+        children[i].nodeType == 1 && children[i].enumElem()
+    }
+}
+var div = document.getElementById('box')
+
+// 7.封装函数，返回元素e的第n层父节点
+Element.prototype.getParent = function (n) {
+    var result = this
+    while (result && n) {
+        result = result.parentElement
+        n--
+    }
+    return result
+}
+var i = document.getElementsByTagName('i')[0]
+
+// 8.封装函数，返回元素e的第n个兄弟节点，n为正，返回后面的兄弟节点，n为负，返回前面的兄弟节点
+
+Element.prototype.getSiblings = function (n) {
+    var result = this
+    while (result && n) {
+        if (n > 0) {
+            // 考虑兼容性
+            if (this.nextElementSibling) {
+                result = result.nextElementSibling
+            } else {
+                for (result = result.nextSibling; result && result.nodeType != 1; result = result.nextSibling);
+            }
+            n--
+        } else {
+            if (this.previousElementSibling) {
+                result = result.previousElementSibling
+            } else {
+                for (result = result.previousSibling; result && result.nodeType != 1; result = result.previousSibling);
+            }
+            n++
+        }
+    }
+    return result
+}
+var span = document.getElementsByTagName('span')[0]
+
+
+// 9.编辑函数，封装myChildren功能，解决以前部分浏览器功能
+Element.prototype.myChildren = function () {
+    var childNodes = this.childNodes, arr = []
+    for (var i = 0, len = childNodes.length; i < len; i++) {
+        if (childNodes[i].nodeType == 1) {
+            arr.push(childNodes[i])
+        }
+    }
+    return arr
+}
+
+// 10.自己封装hasChildren方法，不可用children属性
+Element.prototype.haschildren = function () {
+    var childNodes = this.childNodes
+    for (var i = 0, len = childNodes.length; i < len; i++) {
+        if (childNodes[i].nodeType == 1) {
+            return true
+        }
+    }
+    return false
+}
+// 11.封装函数insertAfter,功能类似insertBefore
+Element.prototype.insertAfter = function (target, node) {
+    var sibling = node.nextElementSibling
+    if (sibling == null) {
+        this.appendChild(target)
+    } else {
+        this.insertBefore(target, sibling)
+    }
+}
+var p = document.getElementsByTagName('p')[0]
+var test = document.createElement('a')
+test.innerText = 'aaa'
+
+// 12.将目标节点内部的节点逆序
+Element.prototype.reverse = function () {
+    var childNodes = this.childNodes
+    for (var i = childNodes.length - 2; i >= 0; i--) {
+        this.appendChild(childNodes[i])
+    }
+}

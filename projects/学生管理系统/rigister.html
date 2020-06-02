@@ -85,7 +85,7 @@
             if (password !== confirmPassword) {
                 return alert('两次密码不一致')
             }
-            _ajax('http://open.duyiedu.com/api/student/stuRegister', {
+            _ajax.post('http://open.duyiedu.com/api/student/stuRegister', {
                 account: account,
                 password: password,
                 username: username,
