@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最爱的鹏鹏</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="./ajax.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="header">最爱的鹏鹏</div> -->
+        <div class="content">
+            <!-- <div class="mine">
+                <img src="./image/mine.jpg" alt="" class="avatar">
+                <p class="text">
+                    你今天吃了嘛？
+                </p>
+            </div> -->
+            <div class="robot">
+                <img src="./image/robot.jpg" alt="" class="avatar">
+                <p class="text">
+                    我今天好想你呀！
+                </p>
+            </div>
+        </div>
+        <div class="footer">
+            <input class="input-text" type="text">
+            <button class="send">发送</button>
+        </div>
+    </div>
+    <script>
+        ; (function () {
+            var deviceWidth = document.documentElement.clientWidth
+            document.documentElement.style.fontSize = 100 * (deviceWidth / 375) + 'px'
+            document.body.style.fontSize = '.14rem'
+        })()
+    </script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
